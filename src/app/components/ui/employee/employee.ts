@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { EmployeeInterface } from '../models/EmployeeInterface.model';
-import { LevelPipe } from '../pipes/level-pipe';
+import { EmployeeInterface } from '../../../models/EmployeeInterface.model';
+import { LevelPipe } from '../../../pipes/level-pipe';
 
 @Component({
   selector: 'app-employee',

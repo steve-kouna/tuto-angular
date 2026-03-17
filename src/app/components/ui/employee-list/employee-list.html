@@ -12,9 +12,9 @@
     <td>{{employee.name}}</td>
     <td>{{employee.level | level}}</td>
     <td>
-      <button (click)="onEditEmployee(employee)">Edit</button>
+      <button (click)="onEditEmployee(employee._id)">Edit</button>
       <button (click)="onDeleteEmployee(employee._id)">Delete</button>
-      <button (click)="onDetailsEmployee(employee._id)">Details</button>
+      <button (click)="onDetailsEmployee(employee)">Details</button>
     </td>
   </tr>
   }
