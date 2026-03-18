@@ -52,15 +52,28 @@ export class EmployeeService {
 
   constructor() {}
 
+  addEmployee(employee: EmployeeInterface) {
+    let id: string;
+    id = crypto.randomUUID();
+    employee._id = id;
+    this.employees.push(employee);
+  }
+
   getEmployees() {
     return this.employees;
   }
 
   getEmployeeById(id: String) {
-    return this.employees.find(employee => employee._id === id);
+    return this.employees.find((employee) => employee._id === id);
   }
 
+  updateEmployee(employee: EmployeeInterface) {
+    this.employees = this.employees.map((emp) =>
+      emp._id === employee._id ? employee : emp
+    );
+  };
+
   deleteEmployee(id: String) {
-    return this.employees = this.employees.filter(employee => employee._id !== id);
+    return (this.employees = this.employees.filter((employee) => employee._id !== id));
   }
 }

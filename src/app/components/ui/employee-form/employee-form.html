@@ -1,0 +1,63 @@
+<!-- Form -->
+<form [formGroup]="form" autocomplete="off" novalidate class="form">
+  @let nameCtrl = form.get('name');
+  @if (nameCtrl?.errors) {
+    <div class="red">
+      @if (nameCtrl?.hasError('required') && nameCtrl?.touched) {
+        <p>The name is required</p>
+      }
+      @if (nameCtrl?.hasError('maxlength')) {
+        <p>The name max length is 30 characters</p>
+      }
+    </div>
+  }
+
+  <div class="form-row">
+    <label for="name">Name</label>
+    <input formControlName="name" form id="name" type="text" />
+  </div>
+
+  @let levelCtrl = form.get('level');
+  @if (levelCtrl?.errors && levelCtrl?.touched) {
+    <div class="red">
+      <p>The level is required</p>
+    </div>
+  }
+
+  <div class="form-row">
+    <label for="level">Level</label>
+    <select formControlName="level" id="level">
+      <option value="J">Junior</option>
+      <option value="M">Medium</option>
+      <option value="S">Senior</option>
+    </select>
+  </div>
+
+  @let deptCtrl = form.get('department');
+  @if (deptCtrl?.errors && deptCtrl?.touched) {
+    <div class="red">
+      <p>The department is required</p>
+    </div>
+  }
+
+  <div class="form-row">
+    <label for="department">Department</label>
+    <select formControlName="department" id="department">
+      <option value="IT">IT</option>
+      <option value="Marketing">Marketing</option>
+      <option value="HR">HR</option>
+    </select>
+  </div>
+  <div class="form-buttons">
+    <button
+      [disabled]="!form.valid"
+      type="submit"
+      (click)="onSubmit()"
+    >
+      @let textCtrl = form.get('_id');
+      {{textCtrl?.value !== '' ? "Edit" : "Add"}}
+    </button>
+    <button type="reset">Reset</button>
+  </div>
+</form>
+
