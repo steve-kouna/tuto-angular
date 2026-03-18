@@ -1,6 +1,33 @@
-<h1>Employees</h1>
-<app-employee-list
-  [employees]="employees"
-  (edit)="onEdit($event)"
-  (delete)="onDelete($event)"
-/>
+<router-outlet />
+<!--<div [formGroup]="form">-->
+<!--@if (usernameCtrl.errors && usernameCtrl.touched) {-->
+<!--  <span [style]="usernameCtrl.errors?'color:red':''">4 charactres minimum <br>Username require</span>-->
+<!--  <br>-->
+<!--}-->
+
+<!--<input-->
+<!--  formControlName="username"-->
+<!--  type="text"-->
+<!--  placeholder="Username"-->
+<!--&gt;-->
+<!--<div>-->
+<!--  major :-->
+<!--  <label>>= 18-->
+<!--    <input-->
+<!--      formControlName="isMajor"-->
+<!--      type="radio"-->
+<!--      [value]="true"-->
+<!--      id="">Y-->
+<!--  </label>-->
+<!--  <label>< 18-->
+<!--    <input-->
+<!--      formControlName="isMajor"-->
+<!--      type="radio"-->
+<!--      [value]="false"-->
+<!--      id="">Y-->
+<!--  </label>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--{{form.value | json}}-->
+

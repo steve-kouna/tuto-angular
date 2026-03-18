@@ -15,7 +15,7 @@ export class EmployeeList {
   @Input() employees: EmployeeInterface[] = [];
   @Output() edit = new EventEmitter<String>();
   @Output() delete = new EventEmitter<String>();
-  employeeDetails: EmployeeInterface = {} as EmployeeInterface;
+
   showDetails: boolean = false;
 
   onEditEmployee(id: String) {
@@ -29,6 +29,5 @@ export class EmployeeList {
 
   onDetailsEmployee(employee: EmployeeInterface) {
     this.showDetails = !this.showDetails;
-    this.employeeDetails = employee;
   }
 }

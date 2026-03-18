@@ -1,30 +1,30 @@
-import { Component, inject, signal } from '@angular/core';
-import { Employee } from './components/ui/employee/employee';
-import { EmployeeInterface } from './models/EmployeeInterface.model';
-import { EmployeeList } from './components/ui/employee-list/employee-list';
+import { Component } from '@angular/core';
 import { EmployeeService } from './services/employeeService';
+import { RouterOutlet } from '@angular/router';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   providers: [EmployeeService],
-  imports: [EmployeeList],
+  imports: [RouterOutlet, ReactiveFormsModule, JsonPipe],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App {
-  employees: EmployeeInterface[] = [];
-  employeeService = inject(EmployeeService);
+  usernameCtrl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(4)
+  ]);
 
-  constructor() {
-    this.employees = this.employeeService.getEmployees();
-  }
+  isMajorCtrl = new FormControl(true);
+  // data = {
+  //   username: '',
+  //   isMajor: true
+  // };
 
-  onEdit(id: String) {
-    console.log('Edit employee with id:', id);
-  }
-
-  onDelete(id: String) {
-    console.log('Delete employee with id:', id);
-    this.employees = this.employeeService.deleteEmployee(id);
-  };
+  form = new FormGroup({
+    username: this.usernameCtrl,
+    isMajor: this.isMajorCtrl
+  })
 }
